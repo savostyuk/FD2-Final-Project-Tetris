@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Тетрис</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/signify.css" type="text/css">
+    <link rel="icon" href="img/tetris.svg" type="image/svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<audio id="bg" loop preload="auto">
+    <source src="audio/bg.mp3" type="audio/mpeg">
+    <source src="audio/bg.ogg" type="audio/ogg">
+    Тег audio не поддерживается вашим браузером. <a href="audio/bg.mp3">Скачайте музыку</a>.
+</audio>
+<audio id="goDown" preload="auto">
+    <source src="audio/down.mp3" type="audio/mpeg">
+    <source src="audio/down.ogg" type="audio/ogg">
+    Тег audio не поддерживается вашим браузером. <a href="audio/down.mp3">Скачайте музыку</a>.
+</audio>
+<audio id="rotate" preload="auto">
+    <source src="audio/rotate.mp3" type="audio/mpeg">
+    <source src="audio/rotate.ogg" type="audio/ogg">
+    Тег audio не поддерживается вашим браузером. <a href="audio/rotate.mp3">Скачайте музыку</a>.
+</audio>
+<audio id="move" preload="auto">
+    <source src="audio/move.mp3" type="audio/mpeg">
+    <source src="audio/move.ogg" type="audio/ogg">
+    Тег audio не поддерживается вашим браузером. <a href="audio/move.mp3">Скачайте музыку</a>.
+</audio>
+<audio id="remove" preload="auto">
+    <source src="audio/remove.mp3" type="audio/mpeg">
+    <source src="audio/remove.ogg" type="audio/ogg">
+    Тег audio не поддерживается вашим браузером. <a href="audio/remove.mp3">Скачайте музыку</a>.
+</audio>
+<script src="http://fe.it-academy.by/JQ/jquery.js"></script>
+<script src="js/block_json.js"></script>
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
+<script src="js/controller.js"></script>
+
+<h1>Тетрис</h1>
+<h2 id="score">Счет: 0</h2>
+<h2 id="level">Уровень: легкий</h2>
+<div class="buttonHolder">
+    <div class="button left"></div>
+    <div class="button up"></div>
+    <div class="button right"></div>
+    <div class="button down"></div>
+</div>
+<div id="wrapper-game">
+    <div id="empty"></div>
+    <div id="app">
+    </div>
+    <div id="menu">
+        <div class="button menu-item ico_mediaplay" id="start"><span>Новая игра</span></div>
+        <div class="button menu-item ico_mediapause" id="pause"><span>Пауза</span></div>
+        <div class="button menu-item ico_settings1" id="settings"><span>Меню</span></div>
+        <div class="button menu-item ico_chart" id="records"><span>Рекорды</span></div>
+        <div id="nextBlock">
+            <p>Следующий<br> блок:</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    // настройка, инициализация
+
+    // создаём все три компонента
+    var game=new GameModel();
+    var view=new GameViewWebPage();
+    var controller=new GameControllerButtons();
+
+    // увязываем компоненты друг с другом
+    // указываем компонентам, в каком DOM им работать
+    var containerElem=document.getElementById('app');
+    game.start(view);
+    view.start(game,containerElem);
+    controller.start(game,containerElem);
+
+    // инициируем первичное отображение Model во View
+    game.updateView();
+
+</script>
+</body>
+</html>

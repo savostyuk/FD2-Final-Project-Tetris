@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'SignifyLite';
+    src: url('../fonts/signify/signifylite-webfont.eot');
+    src: url('../fonts/signify/signifylite-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/signify/signifylite-webfont.woff') format('woff'),
+         url('../fonts/signify/signifylite-webfont.ttf') format('truetype'),
+         url('../fonts/signify/signifylite-webfont.svg#SignifyLite') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.ico_mediaplay:before,.ico_mediapause:before, .ico_chart:before, .ico_settings1:before 	{
+    display: none;
+    font-family: 'SignifyLite';
+    text-align: center;
+    font-size: 30px;
+    color: #F8D778;
+    margin-top: -14px;
+}
+
+.ico_mediaplay:before	{ content:"5"; }
+.ico_mediapause:before	{ content:"6"; }
+.ico_chart:before	{ content:"K"; }
+.ico_settings1:before	{ content:"Y"; }
+
+
+@media only screen and (max-width: 600px){
+    .ico_mediaplay:before,.ico_mediapause:before, .ico_chart:before, .ico_settings1:before 	{
+        display: block;
+    }
+}
